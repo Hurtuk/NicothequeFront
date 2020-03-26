@@ -1,0 +1,25 @@
+<h2>123 films {{ titleLabel }}</h2>
+<div class="movies">
+    <div class="movie">
+        <div class="poster" [style.backgroundImage]="'url(http://louiecinephile.fr/moviesServer/images/posters/2.jpg)'"></div>
+        <div class="data">
+            <h3>The Dark Knight - Le Chevalier Noir</h3>
+            <div class="year">2008</div>
+            <div class="categories">
+                <span>Thriller</span>
+                <span>Super-Héros</span>
+            </div>
+            <div class="staff">
+                <div class="directors">De <span>Christopher Nolan</span></div>
+                <div class="actors">Avec <span>Christian Bale</span></div>
+            </div>
+            <div class="plot">Ceci est un résumé</div>
+            <div class="buttons">
+                <button *ngIf="titleLabel != 'non classés'" class="unset">Non classé</button>
+                <button *ngIf="titleLabel != 'ignorés'" class="ignored">Ignoré</button>
+                <button *ngIf="titleLabel != 'à voir'" class="tosee">A voir</button>
+                <button *ngIf="titleLabel != 'vus'" class="seen">Vu</button>
+            </div>
+        </div>
+    </div>
+</div>

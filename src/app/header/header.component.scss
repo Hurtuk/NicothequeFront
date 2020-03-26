@@ -1,0 +1,29 @@
+:host {
+    overflow: hidden;
+}
+
+span {
+    line-height: 50px;
+    margin-left: 20px;
+    display: block;
+    float: left;
+}
+
+.logoff {
+    background: #e20000;
+    border-radius: 100%;
+    display: block;
+    float: right;
+    border: none;
+    color: white;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    top: -10px;
+    right: -10px;
+
+    &::before {
+        content: 'O';
+    }
+}

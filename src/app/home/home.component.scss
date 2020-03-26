@@ -1,0 +1,11 @@
+:host {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+app-movies {
+    display: inline-block;
+    height: 100%;
+    width: 100vw;
+    transition: margin-left 1s ease, margin-right 1s ease;
+}
