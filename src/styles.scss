@@ -8,11 +8,11 @@ body {
 }
 
 body {
-    background: #939ba8; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #939ba8 0%, #cad3d5 31%, #d7dadb 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #939ba8 0%,#cad3d5 31%,#d7dadb 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #939ba8 0%,#cad3d5 31%,#d7dadb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#939ba8', endColorstr='#d7dadb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #dee6e7; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #aab3c0 0%, #dee6e7 50%, #f0f2f3 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #aab3c0 0%,#dee6e7 50%,#f0f2f3 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #aab3c0 0%,#dee6e7 50%,#f0f2f3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aab3c0', endColorstr='#f0f2f3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: $text-dark-color;
     font-family: 'Pragati Narrow', sans-serif;
     font-size: 20px;

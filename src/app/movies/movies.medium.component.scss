@@ -1,0 +1,48 @@
+@import '../../shared/widths.scss';
+
+@media screen and (min-width: $medium-width) {
+    .movies {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .movie {
+        display: flex;
+        min-width: 435px;
+        flex: 1;
+        margin: 0;
+        padding: 25px;
+    }
+
+    .poster {
+        flex-shrink: 0;
+    }
+
+    .data {
+        flex: 1;
+        margin-left: 20px;
+
+        h3 {
+            margin-top: 0;
+            text-align: left;
+        }
+
+        .year {
+            float: right;
+            margin-top: 0;
+        }
+
+        .categories {
+            text-align: left;
+        }
+
+        .staff {
+            margin-top: 10px;
+        }
+    }
+
+    .buttons {
+        margin-top: 10px;
+    }
+}

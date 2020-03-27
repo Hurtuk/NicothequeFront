@@ -4,7 +4,8 @@ import { faQuestion, faTrashAlt, faHistory, faCheck } from '@fortawesome/free-so
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.scss',
+              './movies.medium.component.scss']
 })
 export class MoviesComponent implements OnInit {
 
