@@ -13,12 +13,116 @@
                 <div class="directors">De <span>Christopher Nolan</span></div>
                 <div class="actors">Avec <span>Christian Bale</span></div>
             </div>
-            <div class="plot">Ceci est un résumé</div>
+            <div class="plot">Batman aborde une phase décisive de sa guerre au crime. Avec l'aide du lieutenant de police Jim Gordon et du nouveau procureur Harvey Dent, il entreprend de démanteler les dernières organisations criminelles qui infestent les rues de la ville. L'association s'avère efficace, mais le trio se heurte bientôt à un nouveau génie du crime qui répand la terreur et le chaos dans Gotham : le Joker. On ne sait pas d'où il vient ni qui il est. Ce criminel possède une intelligence redoutable doublé d'un humour sordide et n'hésite pas à s'attaquer à la pègre locale dans le seul but de semer le chaos.</div>
             <div class="buttons">
-                <button *ngIf="titleLabel != 'non classés'" class="unset">Non classé</button>
-                <button *ngIf="titleLabel != 'ignorés'" class="ignored">Ignoré</button>
-                <button *ngIf="titleLabel != 'à voir'" class="tosee">A voir</button>
-                <button *ngIf="titleLabel != 'vus'" class="seen">Vu</button>
+                <button *ngIf="titleLabel != 'non classés'" class="button unset">
+                    <span>Déclas.</span>
+                    <div class="icon">
+                        <fa-icon [icon]="unsetIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'ignorés'" class="button ignored">
+                    <span>Ignorer</span>
+                    <div class="icon">
+                        <fa-icon [icon]="ignoredIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'à voir'" class="button tosee">
+                    <span>A voir</span>
+                    <div class="icon">
+                        <fa-icon [icon]="toseeIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'vus'" class="button seen">
+                    <span>Vu</span>
+                    <div class="icon">
+                        <fa-icon [icon]="seenIcon"></fa-icon>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="movie">
+        <div class="poster" [style.backgroundImage]="'url(http://louiecinephile.fr/moviesServer/images/posters/2.jpg)'"></div>
+        <div class="data">
+            <h3>The Dark Knight - Le Chevalier Noir</h3>
+            <div class="year">2008</div>
+            <div class="categories">
+                <span>Thriller</span>
+                <span>Super-Héros</span>
+            </div>
+            <div class="staff">
+                <div class="directors">De <span>Christopher Nolan</span></div>
+                <div class="actors">Avec <span>Christian Bale</span></div>
+            </div>
+            <div class="plot">Batman aborde une phase décisive de sa guerre au crime. Avec l'aide du lieutenant de police Jim Gordon et du nouveau procureur Harvey Dent, il entreprend de démanteler les dernières organisations criminelles qui infestent les rues de la ville. L'association s'avère efficace, mais le trio se heurte bientôt à un nouveau génie du crime qui répand la terreur et le chaos dans Gotham : le Joker. On ne sait pas d'où il vient ni qui il est. Ce criminel possède une intelligence redoutable doublé d'un humour sordide et n'hésite pas à s'attaquer à la pègre locale dans le seul but de semer le chaos.</div>
+            <div class="buttons">
+                <button *ngIf="titleLabel != 'non classés'" class="button unset">
+                    <span>Déclas.</span>
+                    <div class="icon">
+                        <fa-icon [icon]="unsetIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'ignorés'" class="button ignored">
+                    <span>Ignorer</span>
+                    <div class="icon">
+                        <fa-icon [icon]="ignoredIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'à voir'" class="button tosee">
+                    <span>A voir</span>
+                    <div class="icon">
+                        <fa-icon [icon]="toseeIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'vus'" class="button seen">
+                    <span>Vu</span>
+                    <div class="icon">
+                        <fa-icon [icon]="seenIcon"></fa-icon>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="movie">
+        <div class="poster" [style.backgroundImage]="'url(http://louiecinephile.fr/moviesServer/images/posters/2.jpg)'"></div>
+        <div class="data">
+            <h3>The Dark Knight - Le Chevalier Noir</h3>
+            <div class="year">2008</div>
+            <div class="categories">
+                <span>Thriller</span>
+                <span>Super-Héros</span>
+            </div>
+            <div class="staff">
+                <div class="directors">De <span>Christopher Nolan</span></div>
+                <div class="actors">Avec <span>Christian Bale</span></div>
+            </div>
+            <div class="plot">Batman aborde une phase décisive de sa guerre au crime. Avec l'aide du lieutenant de police Jim Gordon et du nouveau procureur Harvey Dent, il entreprend de démanteler les dernières organisations criminelles qui infestent les rues de la ville. L'association s'avère efficace, mais le trio se heurte bientôt à un nouveau génie du crime qui répand la terreur et le chaos dans Gotham : le Joker. On ne sait pas d'où il vient ni qui il est. Ce criminel possède une intelligence redoutable doublé d'un humour sordide et n'hésite pas à s'attaquer à la pègre locale dans le seul but de semer le chaos.</div>
+            <div class="buttons">
+                <button *ngIf="titleLabel != 'non classés'" class="button unset">
+                    <span>Déclas.</span>
+                    <div class="icon">
+                        <fa-icon [icon]="unsetIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'ignorés'" class="button ignored">
+                    <span>Ignorer</span>
+                    <div class="icon">
+                        <fa-icon [icon]="ignoredIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'à voir'" class="button tosee">
+                    <span>A voir</span>
+                    <div class="icon">
+                        <fa-icon [icon]="toseeIcon"></fa-icon>
+                    </div>
+                </button>
+                <button *ngIf="titleLabel != 'vus'" class="button seen">
+                    <span>Vu</span>
+                    <div class="icon">
+                        <fa-icon [icon]="seenIcon"></fa-icon>
+                    </div>
+                </button>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'tosee', pathMatch: 'full' },
   { path: '**', component: HomeComponent }
 ];
 
