@@ -5,11 +5,13 @@ import { faQuestion, faTrashAlt, faHistory, faCheck } from '@fortawesome/free-so
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss',
+              './movies.alt.component.scss',
               './movies.medium.component.scss']
 })
 export class MoviesComponent implements OnInit {
 
   @Input() public titleLabel: string;
+  @Input() public minimal: boolean;
 
   // Icons
   unsetIcon = faQuestion;
@@ -17,9 +19,12 @@ export class MoviesComponent implements OnInit {
   toseeIcon = faHistory;
   seenIcon = faCheck;
 
+  public selectedId: number;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedId = 12;
   }
 
 }

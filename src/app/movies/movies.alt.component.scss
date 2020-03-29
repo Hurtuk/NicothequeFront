@@ -1,3 +1,60 @@
+@import '../../shared/colors.scss';
+
 .grid {
-    
+    justify-content: center;
+    position: relative;
+
+    .movie {
+        min-width: auto;
+        flex: 0;
+        cursor: pointer;
+        border-radius: 5px 5px 0 0;
+
+        &.selected {
+            background-color: rgba(0, 0, 0, .85);
+
+            .data {
+                display: block;
+            }
+        }
+    }
+
+    .poster {
+        width: 97px;
+        height: 146px;
+    }
+
+    .data {
+        display: none;
+        margin-left: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-top: 171px;
+        background-color: rgba(0, 0, 0, .85);
+        padding: 20px 30px 10px;
+
+        h3 {
+            text-align: center;
+            color: $text-light-color;
+        }
+
+        .categories {
+            color: $text-light-color;
+        }
+
+        .staff {
+            color: $text-light-color;
+        }
+
+        .plot {
+            border-top: 1px solid transparentize($text-light-color, .5);
+            padding-top: 10px;
+            margin-top: 5px;
+        }
+    }
+
+    .buttons {
+        opacity: 1;
+    }
 }
