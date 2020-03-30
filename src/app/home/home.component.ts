@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Types } from 'src/model/types.enum';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,8 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  public Types = Types;
 
   private static DEFAULT_VIEW = 2;
   private static VIEWS: any = { '/unset': 0, '/ignored': 1, '/tosee': 2, '/seen': 3 };
