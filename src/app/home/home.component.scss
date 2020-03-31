@@ -1,12 +1,14 @@
 :host {
     white-space: nowrap;
     overflow: hidden;
+    position: relative;
 }
 
 app-movies {
-    display: inline-block;
-    vertical-align: top;
-    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     width: 100vw;
-    transition: margin-left 1s ease, margin-right 1s ease;
+    transition: left 1s ease;
 }

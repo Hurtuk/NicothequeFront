@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faQuestion, faTrashAlt, faHistory, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Types } from 'src/model/types.enum';
 import { Movie } from 'src/model/movie';
-import { MovieService } from 'src/services/movie.service';
+import { MovieService } from 'src/app/shared/services/movie.service';
 
 @Component({
   selector: 'app-movies',
@@ -16,11 +16,12 @@ export class MoviesComponent implements OnInit {
   public Types = Types;
 
   @Input() public type: Types;
+  @Input() public movies: Movie[];
+
+  @Output() public movieMoved = new EventEmitter<{ idMovie: number, newType: Types }>();
 
   public titleLabel: string;
   public minimal: boolean;
-
-  public movies: Movie[];
 
   // Icons
   public unsetIcon = faQuestion;
@@ -30,9 +31,7 @@ export class MoviesComponent implements OnInit {
 
   public selectedId: number | null;
 
-  constructor(
-    private movieService: MovieService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     // Minimal
@@ -45,8 +44,11 @@ export class MoviesComponent implements OnInit {
       case Types.TOSEE: this.titleLabel = 'à voir'; break;
       case Types.SEEN: this.titleLabel = 'vus'; break;
     }
+  }
 
-    this.movieService.getMovies(this.type).subscribe(movies => this.movies = movies);
+  public moveMovie(id: number, type: Types) {
+    this.movies.splice(this.movies.findIndex(m => m.id === id), 1);
+    this.movieMoved.emit({ idMovie: id, newType: type });
   }
 
   public toggle(id: number) {

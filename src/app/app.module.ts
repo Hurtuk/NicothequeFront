@@ -10,6 +10,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LengthPipe } from './shared/pipes/length.pipe';
+import { OverviewPipe } from './shared/pipes/overview.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MenuComponent,
     MoviesComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LengthPipe,
+    OverviewPipe
   ],
   imports: [
     BrowserModule,
