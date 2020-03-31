@@ -9,8 +9,8 @@
                 <span *ngFor="let category of movie.categories">{{ category }}</span>
             </div>
             <div class="staff">
-                <div class="directors">De <span *ngFor="let director of movie.directors; let last = last">{{ director.replace(' ', '&nbsp;') + (!last ? ', ': '') }}</span></div>
-                <div class="actors">Avec <span *ngFor="let actor of movie.actors; let last = last">{{ actor.replace(' ', '&nbsp;') + (!last ? ', ': '')}}</span></div>
+                <div class="directors">De <span *ngFor="let director of movie.directors; let last = last" [innerHtml]="(director | nbsp) + (!last ? ', ': '')"></span></div>
+                <div class="actors">Avec <span *ngFor="let actor of movie.actors; let last = last" [innerHtml]="(actor | nbsp) + (!last ? ', ': '')"></span></div>
             </div>
             <div class="plot" [innerHtml]="movie.overview | overview"></div>
             <div class="buttons">

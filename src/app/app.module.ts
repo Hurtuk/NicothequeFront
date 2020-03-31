@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LengthPipe } from './shared/pipes/length.pipe';
 import { OverviewPipe } from './shared/pipes/overview.pipe';
+import { NbspPipe } from './shared/pipes/nbsp.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { OverviewPipe } from './shared/pipes/overview.pipe';
     LoginComponent,
     HomeComponent,
     LengthPipe,
-    OverviewPipe
+    OverviewPipe,
+    NbspPipe
   ],
   imports: [
     BrowserModule,
