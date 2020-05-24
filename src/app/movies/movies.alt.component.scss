@@ -19,6 +19,12 @@
         }
     }
 
+    .owned {
+        height: 40px;
+        background-size: 40px;
+        top: 130px;
+    }
+
     .poster {
         width: 97px;
         height: 146px;
@@ -33,6 +39,7 @@
         margin-top: 171px;
         background-color: rgba(0, 0, 0, .85);
         padding: 20px 30px 10px;
+        z-index: 1;
 
         h3 {
             text-align: center;

@@ -5,12 +5,55 @@
     flex-direction: column;
 }
 
-h2 {
+header {
     text-align: center;
-    font-weight: bold;
-    font-size: 1.7em;
-    margin: 0;
-    line-height: 110px;
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.7em;
+        margin: 0;
+        line-height: 110px;
+        display: inline;
+    }
+
+    button {
+        width: 30px;
+        height: 30px;
+        background: transparent url(../../assets/owned.png) no-repeat center center;
+        background-size: 30px;
+        display: inline-block;
+        opacity: .3;
+        cursor: pointer;
+        border: 0;
+        margin-left: 20px;
+        outline: 0;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    fa-icon {
+        margin-left: 20px;
+        cursor: pointer;
+    }
+
+    input {
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid darkgray;
+        vertical-align: middle;
+        margin-left: 5px;
+        width: 0;
+        transition: width .3s;
+        text-transform: uppercase;
+
+        &:focus,
+        &.open {
+            width: 100px;
+        }
+    }
 }
 
 .movies {
@@ -33,6 +76,18 @@ h2 {
     }
 }
 
+.owned {
+    height: 50px;
+    background: transparent url(../../assets/owned.png) no-repeat center center;
+    background-size: 50px;
+    top: 205px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+
 .poster {
     width: 145px;
     height: 218px;
@@ -41,6 +96,7 @@ h2 {
     border-radius: 3px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .5);
     margin: 0 auto;
+    position: relative;
 }
 
 .data {

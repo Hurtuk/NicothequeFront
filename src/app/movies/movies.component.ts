@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faQuestion, faTrashAlt, faHistory, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion, faTrashAlt, faHistory, faCheck, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Types } from 'src/model/types.enum';
 import { Movie } from 'src/model/movie';
-import { MovieService } from 'src/app/shared/services/movie.service';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-movies',
@@ -23,15 +23,22 @@ export class MoviesComponent implements OnInit {
   public titleLabel: string;
   public minimal: boolean;
 
+  public currentPermission: string[] | null;
+  public isAdmin: boolean;
+
   // Icons
   public unsetIcon = faQuestion;
   public ignoredIcon = faTrashAlt;
   public toseeIcon = faHistory;
   public seenIcon = faCheck;
+  public searchIcon = faSearch;
+
+  public owned: boolean;
+  public searchTerm: string;
 
   public selectedId: number | null;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     // Minimal
@@ -44,6 +51,12 @@ export class MoviesComponent implements OnInit {
       case Types.TOSEE: this.titleLabel = 'à voir'; break;
       case Types.SEEN: this.titleLabel = 'vus'; break;
     }
+
+    // Current user
+    this.userService.currentUser.subscribe(user => {
+        this.currentPermission = user ? user.permissions : null;
+    });
+    this.userService.adminLogged.subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
   public moveMovie(id: number, type: Types) {
@@ -57,6 +70,10 @@ export class MoviesComponent implements OnInit {
     } else {
       this.selectedId = id;
     }
+  }
+
+  public canDo(toType: Types): boolean {
+    return this.isAdmin || (!!this.currentPermission && this.currentPermission.indexOf(Types[this.type][0] + Types[toType][0]) !== -1);
   }
 
 }

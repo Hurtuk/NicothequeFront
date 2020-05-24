@@ -1,44 +1,52 @@
-<h2>{{ movies?.length }} films {{ titleLabel }}</h2>
+<header>
+    <h2>{{ movies?.length }} films {{ titleLabel }}</h2>
+    <label><fa-icon [icon]="searchIcon"></fa-icon><input type="text" [class.open]="!!searchTerm" [(ngModel)]="searchTerm" /></label>
+    <button [class.active]="owned" (click)="owned = !owned"></button>
+</header>
 <div class="movies" [class.grid]="minimal">
-    <div class="movie" *ngFor="let movie of movies" [class.selected]="selectedId == movie.id" (click)="toggle(movie.id)">
-        <div class="poster" [style.backgroundImage]="'url(http://louiecinephile.fr/moviesServer/images/posters/' + movie.id + '.jpg)'"></div>
-        <div class="data" *ngIf="!minimal || selectedId == movie.id">
-            <h3>{{ movie.title }}</h3>
-            <div class="year">{{ movie.length | length }} · {{ movie.year }}</div>
-            <div class="categories">
-                <span *ngFor="let category of movie.categories">{{ category }}</span>
+    <ng-container *ngFor="let movie of movies">
+        <div class="movie" *ngIf="(!owned || movie.owned) && (!searchTerm || movie.title.toUpperCase().indexOf(searchTerm.toUpperCase()) !== -1)" [class.selected]="selectedId == movie.id" (click)="toggle(movie.id)">
+            <div class="poster" [style.backgroundImage]="'url(http://louiecinephile.fr/moviesServer/images/posters/' + movie.id + '.jpg)'">
+                <i class="owned" *ngIf="movie.owned"></i>
             </div>
-            <div class="staff">
-                <div class="directors">De <span *ngFor="let director of movie.directors; let last = last" [innerHtml]="(director | nbsp) + (!last ? ', ': '')"></span></div>
-                <div class="actors">Avec <span *ngFor="let actor of movie.actors; let last = last" [innerHtml]="(actor | nbsp) + (!last ? ', ': '')"></span></div>
-            </div>
-            <div class="plot" [innerHtml]="movie.overview | overview"></div>
-            <div class="buttons">
-                <button *ngIf="type != Types.UNSET" class="button unset" (click)="moveMovie(movie.id, Types.UNSET)">
-                    <span>Déclas.</span>
-                    <div class="icon">
-                        <fa-icon [icon]="unsetIcon"></fa-icon>
-                    </div>
-                </button>
-                <button *ngIf="type != Types.IGNORED" class="button ignored" (click)="moveMovie(movie.id, Types.IGNORED)">
-                    <span>Ignorer</span>
-                    <div class="icon">
-                        <fa-icon [icon]="ignoredIcon"></fa-icon>
-                    </div>
-                </button>
-                <button *ngIf="type != Types.TOSEE" class="button tosee" (click)="moveMovie(movie.id, Types.TOSEE)">
-                    <span>A voir</span>
-                    <div class="icon">
-                        <fa-icon [icon]="toseeIcon"></fa-icon>
-                    </div>
-                </button>
-                <button *ngIf="type != Types.SEEN" class="button seen" (click)="moveMovie(movie.id, Types.SEEN)">
-                    <span>Vu</span>
-                    <div class="icon">
-                        <fa-icon [icon]="seenIcon"></fa-icon>
-                    </div>
-                </button>
+            <div class="data" *ngIf="!minimal || selectedId == movie.id">
+                <h3>{{ movie.title }}</h3>
+                <div class="year">{{ movie.length | length }} · {{ movie.year }}</div>
+                <div class="categories">
+                    <span *ngFor="let category of movie.categories">{{ category }}</span>
+                </div>
+                <div class="staff">
+                    <div class="directors">De <span *ngFor="let director of movie.directors; let last = last" [innerHtml]="(director | nbsp) + (!last ? ', ': '')"></span></div>
+                    <div class="actors">Avec <span *ngFor="let actor of movie.actors; let last = last" [innerHtml]="(actor | nbsp) + (!last ? ', ': '')"></span></div>
+                </div>
+                <div class="plot" [innerHtml]="movie.overview | overview"></div>
+                <div class="buttons">
+                    <button *ngIf="type != Types.UNSET && canDo(Types.UNSET)" class="button unset" (click)="moveMovie(movie.id, Types.UNSET)">
+                        <span>Déclas.</span>
+                        <div class="icon">
+                            <fa-icon [icon]="unsetIcon"></fa-icon>
+                        </div>
+                    </button>
+                    <button *ngIf="type != Types.IGNORED && canDo(Types.IGNORED)" class="button ignored" (click)="moveMovie(movie.id, Types.IGNORED)">
+                        <span>Ignorer</span>
+                        <div class="icon">
+                            <fa-icon [icon]="ignoredIcon"></fa-icon>
+                        </div>
+                    </button>
+                    <button *ngIf="type != Types.TOSEE && canDo(Types.TOSEE)" class="button tosee" (click)="moveMovie(movie.id, Types.TOSEE)">
+                        <span>A voir</span>
+                        <div class="icon">
+                            <fa-icon [icon]="toseeIcon"></fa-icon>
+                        </div>
+                    </button>
+                    <button *ngIf="type != Types.SEEN && canDo(Types.SEEN)" class="button seen" (click)="moveMovie(movie.id, Types.SEEN)">
+                        <span>Vu</span>
+                        <div class="icon">
+                            <fa-icon [icon]="seenIcon"></fa-icon>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </ng-container>
 </div>

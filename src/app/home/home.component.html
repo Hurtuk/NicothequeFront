@@ -1,4 +1,4 @@
-<app-movies [type]="Types.UNSET" [movies]="movies.get(Types.UNSET)" (movieMoved)="moveMovieTo($event)" [style.left.vw]="-currentView * 100"></app-movies>
-<app-movies [type]="Types.IGNORED" [movies]="movies.get(Types.IGNORED)" (movieMoved)="moveMovieTo($event)" [style.left.vw]="-(currentView-1) * 100"></app-movies>
-<app-movies [type]="Types.TOSEE" [movies]="movies.get(Types.TOSEE)" (movieMoved)="moveMovieTo($event)" [style.left.vw]="-(currentView-2) * 100"></app-movies>
-<app-movies [type]="Types.SEEN" [movies]="movies.get(Types.SEEN)" (movieMoved)="moveMovieTo($event)" [style.left.vw]="-(currentView-3) * 100"></app-movies>
+<app-movies [type]="Types.UNSET" [movies]="movies.get(Types.UNSET)" (movieMoved)="moveMovieTo($event, Types.UNSET)" [style.left.vw]="-currentView * 100"></app-movies>
+<app-movies [type]="Types.IGNORED" [movies]="movies.get(Types.IGNORED)" (movieMoved)="moveMovieTo($event, Types.IGNORED)" [style.left.vw]="-(currentView-1) * 100"></app-movies>
+<app-movies [type]="Types.TOSEE" [movies]="movies.get(Types.TOSEE)" (movieMoved)="moveMovieTo($event, Types.TOSEE)" [style.left.vw]="-(currentView-2) * 100"></app-movies>
+<app-movies [type]="Types.SEEN" [movies]="movies.get(Types.SEEN)" (movieMoved)="moveMovieTo($event, Types.SEEN)" [style.left.vw]="-(currentView-3) * 100"></app-movies>

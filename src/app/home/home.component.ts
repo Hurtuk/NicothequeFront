@@ -3,6 +3,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Types } from 'src/model/types.enum';
 import { MovieService } from '../shared/services/movie.service';
 import { Movie } from 'src/model/movie';
+import { UserService } from '../shared/services/user.service';
+import { User } from 'src/model/user';
 
 @Component({
   selector: 'app-home',
@@ -18,14 +20,31 @@ export class HomeComponent implements OnInit {
 
   public currentView = 0;
 
+  public users: User[];
+  public currentUser: User;
+
   public movies = new Map<Types, Movie[]>();
 
   constructor(
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    this.userService.currentUser.subscribe(u => {
+      this.currentUser = u;
+      this.loadCurrentUser();
+    });
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
+      if (this.users.length === 1) {
+        this.userService.currentUser.next(this.users[0]);
+      }
+    });
+  }
+
+  private loadCurrentUser() {
     // Load movies
     this.reload(Types.UNSET);
     this.reload(Types.IGNORED);
@@ -42,9 +61,14 @@ export class HomeComponent implements OnInit {
     this.moveTo(this.router.url);
   }
 
-  public moveMovieTo(event: { idMovie: number, newType: Types }) {
-    this.movieService.moveMovieTo(event.idMovie, event.newType).subscribe(() => {
+  public moveMovieTo(event: { idMovie: number, newType: Types }, oldType: Types) {
+    this.movieService.moveMovieTo(event.idMovie, this.currentUser.id, event.newType).subscribe(() => { // TODO variable userId
       this.reload(event.newType);
+
+      let lastValue = this.movieService.counts.get(oldType)?.value;
+      this.movieService.counts.get(oldType)?.next(lastValue ? lastValue - 1 : 0);
+      lastValue = this.movieService.counts.get(event.newType)?.value;
+      this.movieService.counts.get(event.newType)?.next(lastValue ? lastValue + 1 : 0);
     });
   }
 

@@ -1,4 +1,4 @@
-<span>Bonjour Mickaël</span>
+<span>Bonjour {{ currentUser?.name }}</span>
 <button class="logoff">
-    <fa-icon [icon]="logoffIcon"></fa-icon>
+    <fa-icon [icon]="logoffIcon" (dblclick)="toggleAdmin()"></fa-icon>
 </button>
