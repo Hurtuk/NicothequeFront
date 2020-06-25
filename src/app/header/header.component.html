@@ -1,4 +1,4 @@
-<span>Bonjour {{ currentUser?.name }}</span>
+<span (dblclick)="toggleAdmin()">Bonjour {{ currentUser?.name }}</span>
 <button class="logoff">
-    <fa-icon [icon]="logoffIcon" (dblclick)="toggleAdmin()"></fa-icon>
+    <fa-icon [icon]="logoffIcon" (click)="userService.currentUser.next(null)"></fa-icon>
 </button>

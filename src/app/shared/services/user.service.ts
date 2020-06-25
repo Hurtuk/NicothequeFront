@@ -9,7 +9,7 @@ import { User } from 'src/model/user';
 export class UserService {
 
   public adminLogged = new BehaviorSubject<boolean>(false);
-  public currentUser = new ReplaySubject<User>(1);
+  public currentUser = new ReplaySubject<User | null>(1);
 
   constructor(
     private http: HttpClient

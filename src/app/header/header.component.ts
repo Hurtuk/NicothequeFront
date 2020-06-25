@@ -11,9 +11,9 @@ import { UserService } from '../shared/services/user.service';
 export class HeaderComponent implements OnInit {
 
   logoffIcon = faPowerOff;
-  public currentUser: User;
+  public currentUser: User | null;
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe(u => this.currentUser = u);

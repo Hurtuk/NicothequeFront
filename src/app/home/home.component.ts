@@ -21,20 +21,22 @@ export class HomeComponent implements OnInit {
   public currentView = 0;
 
   public users: User[];
-  public currentUser: User;
+  public currentUser: User | null;
 
   public movies = new Map<Types, Movie[]>();
 
   constructor(
     private router: Router,
     private movieService: MovieService,
-    private userService: UserService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe(u => {
       this.currentUser = u;
-      this.loadCurrentUser();
+      if (this.currentUser) {
+        this.loadCurrentUser();
+      }
     });
     this.userService.getUsers().subscribe(users => {
       this.users = users;
@@ -62,18 +64,22 @@ export class HomeComponent implements OnInit {
   }
 
   public moveMovieTo(event: { idMovie: number, newType: Types }, oldType: Types) {
-    this.movieService.moveMovieTo(event.idMovie, this.currentUser.id, event.newType).subscribe(() => { // TODO variable userId
-      this.reload(event.newType);
+    if (this.currentUser) {
+      this.movieService.moveMovieTo(event.idMovie, this.currentUser.id, event.newType).subscribe(() => { // TODO variable userId
+        this.reload(event.newType);
 
-      let lastValue = this.movieService.counts.get(oldType)?.value;
-      this.movieService.counts.get(oldType)?.next(lastValue ? lastValue - 1 : 0);
-      lastValue = this.movieService.counts.get(event.newType)?.value;
-      this.movieService.counts.get(event.newType)?.next(lastValue ? lastValue + 1 : 0);
-    });
+        let lastValue = this.movieService.counts.get(oldType)?.value;
+        this.movieService.counts.get(oldType)?.next(lastValue ? lastValue - 1 : 0);
+        lastValue = this.movieService.counts.get(event.newType)?.value;
+        this.movieService.counts.get(event.newType)?.next(lastValue ? lastValue + 1 : 0);
+      });
+    }
   }
 
   private reload(type: Types) {
-    this.movieService.getMovies(type).subscribe((m: Movie[]) => this.movies.set(type, m));
+    if (this.currentUser) {
+      this.movieService.getMovies(type, this.currentUser).subscribe((m: Movie[]) => this.movies.set(type, m));
+    }
   }
 
   // Move to the desired panel

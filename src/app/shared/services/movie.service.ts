@@ -4,6 +4,7 @@ import { Movie } from 'src/model/movie';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from 'src/model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class MovieService {
     this.counts.set(Types.SEEN, new BehaviorSubject<number>(0));
   }
 
-  public getMovies(type: Types): Observable<Movie[]> {
-    return this.http.get<Movie[]>('http://louiecinephile.fr/tempSeenMovies/api/getMovies.php?user=1&state=' + Types[type])
+  public getMovies(type: Types, user: User): Observable<Movie[]> {
+    return this.http.get<Movie[]>('http://louiecinephile.fr/tempSeenMovies/api/getMovies.php?user=' + user.id + '&state=' + Types[type])
             .pipe(
               tap(movies => {
                 this.counts.get(type)?.next(movies.length)
